@@ -1,0 +1,126 @@
+ {{!-- <style>
+      body { 
+        background-color: lightseagreen;
+        }
+      
+      #wrapper {
+        background-color: gray;
+        width: 100%;
+        padding-top: 5%;
+      }
+      #articles {
+        display: inline-block;
+        overflow: auto;
+        width: 60%;
+        height: 700px;
+      }
+  
+      textarea, input {
+        display: block;
+        width: 100%;
+        background-color: #FCF5C7;
+      }
+      input {
+        height: 36px;
+        font-size: 24px;
+      }
+      textarea {
+        height: 200px;
+        font-size: 18px;
+      }
+
+      button {
+        background-color: lightgray;
+        color: white;
+      }
+
+      .nav,
+      a {
+        padding: 1%; 
+        color: white;
+      }
+    </style> --}}
+       
+       <ul class="nav navbar-dark">
+       <a class="navbar-brand">Mongo Scraper</a>
+           <li class="nav-item">
+                <a class="nav-link active" id="home-tab" href="#home">Home</a>
+           </li>
+           <li class="nav-item">
+                <a class="nav-link active" id="saved-tab" href="#saved">Saved Articles</a>
+           </li>
+           <li>
+                <button class="btn my-2 my-sm-0" type="submit">Scrape New Articles</button>
+            </li>
+       </ul>
+    
+   <div id="wrapper">
+        <h1>CNN Health News Scraper</h1>
+      <h2><i>Your personal world health news scrapper!</i></h2>
+      <div id="articles"></div>
+      <button type="submit">Add</button>
+    </div>
+
+    
+  <script>
+    $(function() {
+    $(".change-sleep").on("click", function(event) {
+    var id = $(this).data("id");
+    var newSleep = $(this).data("newsleep");
+
+    var newSleepState = {
+      sleepy: newSleep
+    };
+
+    // Send the PUT request.
+    $.ajax("/api/cats/" + id, {
+      type: "PUT",
+      data: newSleepState
+    }).then(
+      function() {
+        console.log("changed sleep to", newSleep);
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+
+  $(".create-form").on("submit", function(event) {
+    // Make sure to preventDefault on a submit event.
+    event.preventDefault();
+
+    var newCat = {
+      name: $("#ca").val().trim(),
+      sleepy: $("[name=sleepy]:checked").val().trim()
+    };
+
+    // Send the POST request.
+    $.ajax("/api/cats", {
+      type: "POST",
+      data: newCat
+    }).then(
+      function() {
+        console.log("created new cat");
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+
+  $(".delete-cat").on("click", function(event) {
+    var id = $(this).data("id");
+
+    // Send the DELETE request.
+    $.ajax("/api/cats/" + id, {
+      type: "DELETE"
+    }).then(
+      function() {
+        console.log("deleted cat", id);
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+});
+</script>
+    

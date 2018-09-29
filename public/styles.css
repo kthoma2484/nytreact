@@ -1,0 +1,65 @@
+body {
+    background-color: lightseagreen;
+}
+
+.nav {
+    background-color: teal;
+}
+
+.nav,
+.nav-link {
+    padding: 10px;
+    color: whitesmoke;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    background-image: url("https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2018/healthcare.jpg");
+    background-size: cover;
+    background-repeat: none;
+    height: 500px;
+}
+
+h1,
+h5 {
+    color: whitesmoke;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#wrapper {
+    background-color: teal;
+    width: 100%;
+    padding: 1%;
+}
+
+#articles {
+    display: inline-block;
+    overflow: auto;
+    width: 80%;
+    max-height: 200px;
+}
+
+
+textarea,
+input {
+    display: block;
+    width: 100%;
+    background-color: #FCF5C7;
+}
+
+input {
+    height: 36px;
+    font-size: 24px;
+}
+
+textarea {
+    height: 200px;
+    font-size: 18px;
+}
+
+button {
+    background-color: lightgray;
+    color: white;
+}
+
